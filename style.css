@@ -127,6 +127,10 @@ html {
 	font-family: 'Special Elite', cursive;
 }
 
+body {
+	background-color: rgba(255, 255, 0, 0.026);
+}
+
 header {
 	height: 75px;
 	background-color: black;
@@ -136,15 +140,26 @@ header {
 	/* padding-left: 400px; */
 }
 
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+nav img {
+	height: 40px;
+}
+
 nav h1 {
-	color: white;
+	color: rgb(242, 240, 228);
 
 	font-size: 2rem;
 }
 
 .form-container {
 	display: flex;
-	gap: 10px;
+	gap: 15px;
 	justify-content: center;
 	margin-top: 25px;
 	padding-bottom: 25px;
@@ -158,9 +173,10 @@ nav h1 {
 
 .form-container input {
 	height: 20px;
-	border-radius: 5px;
+	border-radius: 2px;
 	border-style: solid;
 	border-width: 1px;
+	background-color: transparent;
 }
 
 .form-container button {
@@ -168,31 +184,53 @@ nav h1 {
 	padding: 12px 45px;
 	text-align: center;
 	/* text-transform: uppercase; */
-	transition: 0.5s;
+	transition: 0.3s;
 	/* background-size: 200% auto; */
 	color: white;
 	background-color: black;
 	box-shadow: 0 0 20px #eee;
-	border-radius: 8px;
+	border-radius: 5px;
 	display: block;
 	align-self: center;
 	justify-content: center;
 	border-style: none;
 	height: 100%;
+	color: rgb(242, 240, 228);
 }
 
 .form-container button:hover {
 	background-position: right center; /* change the direction of the change here */
-	color: #fff;
+	color: rgb(0, 0, 0);
 	text-decoration: none;
 	cursor: pointer;
-	background-color: rgb(59, 59, 59);
+	/* background-color: rgb(31, 155, 0); */
+	background-color: rgb(11, 180, 5);
+}
+
+.deleteBtn {
+	font-family: 'Special Elite', cursive;
+	font-size: 1.3rem;
+	/* padding: 10px 10px; */
+	text-align: center;
+	transition: 0.5s;
+	color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 50%;
+	display: block;
+	align-self: center;
+	justify-content: center;
+	border-style: none;
+}
+
+.deleteBtn:hover {
+	cursor: pointer;
+	color: red;
 }
 
 .library-table {
 	border-collapse: collapse;
 	margin: 25px 0;
-	min-width: 400px;
+	width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -210,11 +248,12 @@ nav h1 {
 	border-bottom: 1px solid rgb(203, 203, 203);
 }
 
-.library-table tbody tr:nth-of-type(odd) {
-	background-color: rgb(242, 242, 242);
-}
+/* .library-table tr:nth-of-type(even) {
+	background-color: rgb(188, 188, 188);
+} */
 
 .library-table th {
 	font-size: 1.15rem;
-	background-color: rgb(223, 223, 223);
+	background-color: rgba(0, 0, 0, 0.055);
+	color: rgb(0, 0, 0);
 }
