@@ -6,12 +6,16 @@ function Book(title, author, pages, read) {
 }
 
 const bookOne = new Book('The Catcher in the Rye', 'J.D. Salinger', 455, false);
-const bookTwo = new Book('Harry Potter', 'J.D. Salinger', 685, false);
-const bookThree = new Book('Book #3', 'J.D. Salinger', 295, true);
+const bookTwo = new Book(
+	"Harry Potter and the Sorcerer's Stone",
+	'J.K. Rowling',
+	685,
+	false
+);
+const bookThree = new Book('Where the Crawdads Sing', 'Delia Owens', 295, true);
+const bookFour = new Book('Atomic Habits', 'James Clear', 295, true);
 
-let myLibrary = [bookOne, bookTwo, bookThree];
-
-// let myLibrary = [];
+let myLibrary = [bookOne, bookTwo, bookThree, bookFour];
 
 const form = document.querySelector('form');
 const table = document.querySelector('table');
@@ -30,33 +34,25 @@ function addBookToLibrary(e) {
 	delButton.innerText = 'x';
 
 	if (read.checked) {
-		readStatus = 'Read';
+		readStatus = true;
 	} else {
-		readStatus = 'Not Read';
+		readStatus = false;
 	}
-
-	let newRow = table.insertRow(table.rows.length);
-
-	let cell1 = newRow.insertCell(0);
-	let cell2 = newRow.insertCell(1);
-	let cell3 = newRow.insertCell(2);
-	let cell4 = newRow.insertCell(3);
-	let cell5 = newRow.insertCell(4);
-
-	cell1.innerText = title;
-	cell2.innerText = author;
-	cell3.innerText = pages;
-	cell4.innerText = readStatus;
-	cell5.appendChild(delButton);
 
 	const newBook = new Book(title, author, pages, readStatus);
 	myLibrary.push(newBook);
 	form.reset();
+	displayBooks();
 }
 
 function displayBooks() {
 	let myLibraryLength = myLibrary.length;
 	for (let i = 0; i < myLibraryLength; i++) {
+		if (myLibrary[i].added) {
+			console.log('this book has already been added');
+			continue;
+		}
+
 		let title = myLibrary[i].title;
 		let author = myLibrary[i].author;
 		let pages = myLibrary[i].pages;
@@ -88,6 +84,7 @@ function displayBooks() {
 		cell3.innerText = pages;
 		cell4.innerText = read;
 		cell5.appendChild(delButton);
+		myLibrary[i].added = true;
 	}
 }
 
