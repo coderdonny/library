@@ -52,7 +52,6 @@ function displayBooks() {
 			console.log('this book has already been added');
 			continue;
 		}
-
 		let title = myLibrary[i].title;
 		let author = myLibrary[i].author;
 		let pages = myLibrary[i].pages;
@@ -83,6 +82,8 @@ function displayBooks() {
 		cell2.innerText = author;
 		cell3.innerText = pages;
 		cell4.innerText = read;
+		cell4.dataset.bookNumber = i;
+		cell4.className = 'readStatus';
 		cell5.appendChild(delButton);
 		myLibrary[i].added = true;
 	}
@@ -108,7 +109,29 @@ function deleteBook(e) {
 	}
 }
 
+function toggleReadStatus(e) {
+	if (!e.target.classList.contains('readStatus')) {
+		return;
+	}
+	const btn = e.target;
+
+	let myLibraryLength = myLibrary.length;
+
+	for (let i = 0; i < myLibraryLength; i++) {
+		if (btn.dataset.bookNumber == myLibrary[i].bookNumber) {
+			if (btn.innerText === 'Read') {
+				btn.closest('td').innerText = 'Not Read';
+				myLibrary[i].read = false;
+			} else {
+				btn.closest('td').innerText = 'Read';
+				myLibrary[i].read = true;
+			}
+		}
+	}
+}
+
 form.addEventListener('submit', addBookToLibrary);
 table.addEventListener('click', deleteBook);
+table.addEventListener('click', toggleReadStatus);
 
 displayBooks();
